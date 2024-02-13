@@ -9,6 +9,7 @@ import {
 // import Footer from "@/components/layout/Footer"
 import Navbar from "@/components/layout/Navbar"
 import Home from "@/sections/Home"
+import ColorSchemeToggle from "@/components/ColorSchemeToggle"
 
 function LandingView() {
   return <div>Landing Page</div>
@@ -26,6 +27,7 @@ export default function SiteIndex() {
       <div>
         <Navbar />
         <LandingView />
+        <ColorSchemeToggle />
       </div>
     )
   }
@@ -34,6 +36,7 @@ export default function SiteIndex() {
     <main>
       <Navbar />
       <Home />
+      <ColorSchemeToggle />
     </main>
   )
 }

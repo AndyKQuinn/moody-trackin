@@ -24,30 +24,25 @@ const SignIn = () => {
 
   return (
     <div className="grid grid-cols-2 items-center min-h-screen">
-      <div className="w-full h-full bg-fuchsia-900"></div>
-      <div className="flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <h1 className="text-3xl font-bold">Sign In </h1>
-          <div className="w-[350px]">
-            <Auth
-              supabaseClient={supabaseClient}
-              providers={["google"]}
-              magicLink={true}
-              appearance={{
-                theme: ThemeSupa,
-                variables: {
-                  default: {
-                    colors: {
-                      brand: "#0D121F",
-                      brandAccent: "#701a75",
-                    },
-                  },
+      <h1 className="text-3xl font-bold">Sign In </h1>
+      <div className="w-[350px]">
+        <Auth
+          supabaseClient={supabaseClient}
+          providers={["google"]}
+          magicLink={true}
+          appearance={{
+            theme: ThemeSupa,
+            variables: {
+              default: {
+                colors: {
+                  brand: "#0D121F",
+                  brandAccent: "#701a75",
                 },
-              }}
-              theme="dark"
-            />
-          </div>
-        </div>
+              },
+            },
+          }}
+          theme="dark"
+        />
       </div>
     </div>
   )

@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { Plus_Jakarta_Sans } from "next/font/google"
 import SupabaseProvider from "@/providers/SupabaseProvider"
 import UserProvider from "@/providers/UserProvider"
+import { ColorSchemeScript } from "@mantine/core"
 
 const font = Plus_Jakarta_Sans({ subsets: ["latin"] })
 
@@ -19,12 +20,15 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body className={font.className}>
         <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
+        // attribute="class"
+        // defaultTheme="dark"
+        // enableSystem
+        // disableTransitionOnChange
         >
           <SupabaseProvider>
             <UserProvider>{children}</UserProvider>
