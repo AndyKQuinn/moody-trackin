@@ -1,42 +1,23 @@
 "use client"
 
-import { useEffect } from "react"
-import {
-  useSessionContext,
-  useSupabaseClient,
-} from "@supabase/auth-helpers-react"
-// import { useRouter } from "next/navigation"
-// import Footer from "@/components/layout/Footer"
-import Navbar from "@/components/layout/Navbar"
-import Home from "@/sections/Home"
-import ColorSchemeToggle from "@/components/ColorSchemeToggle"
+// import { useEffect } from "react"
+// import {
+//   useSessionContext,
+//   useSupabaseClient,
+// } from "@supabase/auth-helpers-react"
 
-function LandingView() {
-  return <div>Landing Page</div>
-}
+import HomeView from "../HomePage"
 
 export default function SiteIndex() {
-  const { session } = useSessionContext()
+  // const { session } = useSessionContext()
 
-  useEffect(() => {
-    console.log("Session.User: ", session?.user)
-  }, [session])
+  // useEffect(() => {
+  //   console.log("Session.User: ", session?.user)
+  // }, [session])
 
-  if (!session) {
-    return (
-      <div>
-        <Navbar />
-        <LandingView />
-        <ColorSchemeToggle />
-      </div>
-    )
-  }
+  // if (!session) {
+  //   return <LandingView />
+  // }
 
-  return (
-    <main>
-      <Navbar />
-      <Home />
-      <ColorSchemeToggle />
-    </main>
-  )
+  return <HomeView />
 }

@@ -1,5 +1,4 @@
 import { ThemeProvider } from "@/components/theme-provider"
-import "./globals.css"
 import type { Metadata } from "next"
 import { Plus_Jakarta_Sans } from "next/font/google"
 import SupabaseProvider from "@/providers/SupabaseProvider"
@@ -24,12 +23,7 @@ export default async function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className={font.className}>
-        <ThemeProvider
-        // attribute="class"
-        // defaultTheme="dark"
-        // enableSystem
-        // disableTransitionOnChange
-        >
+        <ThemeProvider>
           <SupabaseProvider>
             <UserProvider>{children}</UserProvider>
           </SupabaseProvider>
