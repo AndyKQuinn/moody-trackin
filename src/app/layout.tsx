@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/layout/theme-provider"
 import type { Metadata } from "next"
 import { Plus_Jakarta_Sans } from "next/font/google"
 import SupabaseProvider from "@/providers/SupabaseProvider"
@@ -9,7 +9,7 @@ const font = Plus_Jakarta_Sans({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Moody Trackin",
-  description: "Track your mood and whatever else you feel like",
+  description: "Track how you feel and what you're learning",
 }
 
 export default async function RootLayout({

@@ -8,6 +8,7 @@ import {
 } from "@supabase/auth-helpers-react"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
+import { Container, Title } from "@mantine/core"
 
 const SignIn = () => {
   const supabaseClient = useSupabaseClient()
@@ -23,28 +24,26 @@ const SignIn = () => {
   }, [session, router])
 
   return (
-    <div className="grid grid-cols-2 items-center min-h-screen">
-      <h1 className="text-3xl font-bold">Sign In </h1>
-      <div className="w-[350px]">
-        <Auth
-          supabaseClient={supabaseClient}
-          providers={["google"]}
-          magicLink={true}
-          appearance={{
-            theme: ThemeSupa,
-            variables: {
-              default: {
-                colors: {
-                  brand: "#0D121F",
-                  brandAccent: "#701a75",
-                },
+    <Container size="sm">
+      <Title order={1}>Sign In</Title>
+      <Auth
+        supabaseClient={supabaseClient}
+        providers={["google"]}
+        magicLink={true}
+        appearance={{
+          theme: ThemeSupa,
+          variables: {
+            default: {
+              colors: {
+                // brand: "#0D121F",
+                // brandAccent: "#701a75",
               },
             },
-          }}
-          theme="dark"
-        />
-      </div>
-    </div>
+          },
+        }}
+        theme="dark"
+      />
+    </Container>
   )
 }
 

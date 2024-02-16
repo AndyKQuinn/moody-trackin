@@ -48,18 +48,21 @@ export default function Header() {
     <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-          <div>Moody Trackin</div>
-
+          <div>
+            <Anchor href="/" underline="never">
+              Moody Trackin
+            </Anchor>
+          </div>
           {user && (
             <Group h="100%" gap={0} visibleFrom="sm">
-              <Link href="/" className={classes.link}>
-                Home
+              <Link href="/track" className={classes.link}>
+                Track
               </Link>
               <Link href="/dashboard" className={classes.link}>
                 Dashboard
               </Link>
-              <Link href="/settings" className={classes.link}>
-                Settings
+              <Link href="/account" className={classes.link}>
+                Account
               </Link>
               <Link href="/feedback" className={classes.link}>
                 Feedback
@@ -91,14 +94,14 @@ export default function Header() {
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
           <Divider my="sm" />
 
-          <Link href="/" className={classes.link}>
-            Home
+          <Link href="/track" className={classes.link}>
+            Track My Day
           </Link>
           <Link href="/dashboard" className={classes.link}>
             Dashboard
           </Link>
-          <Link href="/settings" className={classes.link}>
-            Settings
+          <Link href="/account" className={classes.link}>
+            Account
           </Link>
           <Link href="/feedback" className={classes.link}>
             Feedback
