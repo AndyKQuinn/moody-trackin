@@ -3,8 +3,9 @@
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useSessionContext } from "@supabase/auth-helpers-react"
-import { Box, Stack, Text, Title } from "@mantine/core"
+import { Box, Button, Stack, Text, Title } from "@mantine/core"
 import Header from "@/components/layout/Header/Header"
+import Link from "next/link"
 
 function LandingView() {
   return (
@@ -20,7 +21,10 @@ function LandingView() {
       >
         <Stack align="center">
           <Title order={1}>Moody Trackin</Title>
-          <Text size="md">Track things and stuff</Text>
+          <Title order={3}>A simple daily mood and learning tracker</Title>
+          <Button href="/sign-in" component={Link} size="md">
+            Sign In
+          </Button>
         </Stack>
       </Box>
     </div>

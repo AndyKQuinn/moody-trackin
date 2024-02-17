@@ -9,10 +9,12 @@ import {
   Card,
   // Center,
   Container,
+  Flex,
   // Group,
   Stack,
   // Table,
   Text,
+  TextInput,
   Title,
 } from "@mantine/core"
 // import { useRouter } from "next/navigation"
@@ -59,12 +61,22 @@ export default function Reports() {
     <Container>
       <Stack align="center">
         <Title order={1}>Dashboard</Title>
+
         <Chart data={tracks} />
         {tracks.map((track, index) => (
           <Card w="60%" key={index}>
-            <Ratings value={track.rating} />
-            <Text>{track.comment}</Text>
-            <Text>{track.learned_thing}</Text>
+            <Flex justify="flex-end">
+              <Ratings value={track.rating} />
+            </Flex>
+
+            <Title order={5}>Comment</Title>
+            <Text pl={16} py={2}>
+              {track.comment}
+            </Text>
+            <Title order={5}>Learned Thing</Title>
+            <Text pl={16} py={2}>
+              {track.learned_thing}
+            </Text>
           </Card>
         ))}
       </Stack>

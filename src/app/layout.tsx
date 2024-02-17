@@ -9,7 +9,7 @@ const font = Plus_Jakarta_Sans({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Moody Trackin",
-  description: "Track how you feel and what you're learning",
+  description: "Keep tabs on things you care about",
 }
 
 export default async function RootLayout({
