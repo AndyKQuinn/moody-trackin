@@ -5,6 +5,7 @@
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Mantine UI](https://mantine.dev/)
 - [Supabase](https://supabase.com/)
 
 ## Local Development

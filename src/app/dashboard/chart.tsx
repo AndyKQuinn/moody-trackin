@@ -15,8 +15,6 @@ type Props = {
 export default function Chart(props: Props) {
   const { data } = props
 
-  console.log("Data: ", data)
-
   // strips time from date/time
   function formatData(data: any) {
     return data.map((item: any) => {
