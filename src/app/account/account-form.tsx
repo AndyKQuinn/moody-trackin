@@ -15,10 +15,12 @@ import {
   Stack,
 } from "@mantine/core"
 import { useForm } from "@mantine/form"
+import { useUser } from "@supabase/auth-helpers-react"
 // import Avatar from "./avatar"
 
-export default function AccountForm({ user }: { user: User | null }) {
+export default function AccountForm() {
   const supabase = createClientComponentClient<Database>()
+  const user = useUser()
 
   const [loading, setLoading] = useState(true)
   const [fullname, setFullname] = useState<string | null>(null)
@@ -55,8 +57,10 @@ export default function AccountForm({ user }: { user: User | null }) {
   }, [user, supabase])
 
   useEffect(() => {
-    getProfile()
-  }, [user, getProfile])
+    if (user) {
+      getProfile()
+    }
+  }, [user])
 
   async function updateProfile({
     username,
