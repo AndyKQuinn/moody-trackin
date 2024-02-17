@@ -5,10 +5,21 @@ import {
   User,
   createClientComponentClient,
 } from "@supabase/auth-helpers-nextjs"
+import {
+  TextInput,
+  Checkbox,
+  Button,
+  Center,
+  Group,
+  Box,
+  Stack,
+} from "@mantine/core"
+import { useForm } from "@mantine/form"
 // import Avatar from "./avatar"
 
 export default function AccountForm({ user }: { user: User | null }) {
   const supabase = createClientComponentClient<Database>()
+
   const [loading, setLoading] = useState(true)
   const [fullname, setFullname] = useState<string | null>(null)
   const [username, setUsername] = useState<string | null>(null)
@@ -79,39 +90,25 @@ export default function AccountForm({ user }: { user: User | null }) {
   }
 
   return (
-    <div className="form-widget">
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={user?.email} disabled />
-      </div>
-      <div>
-        <label htmlFor="fullName">Full Name</label>
-        <input
-          id="fullName"
-          type="text"
+    <Box maw={340} mx="auto" p={4}>
+      <Stack>
+        <TextInput label="Email" value={user?.email || ""} disabled />
+        <TextInput
+          label="Full Name"
           value={fullname || ""}
-          onChange={(e) => setFullname(e.target.value)}
+          onChange={(e) => setFullname(e.currentTarget.value)}
         />
-      </div>
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
+        <TextInput
+          label="Username"
           value={username || ""}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.currentTarget.value)}
         />
-      </div>
-      <div>
-        <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          type="url"
+        <TextInput
+          label="Website"
           value={website || ""}
-          onChange={(e) => setWebsite(e.target.value)}
+          onChange={(e) => setWebsite(e.currentTarget.value)}
         />
-      </div>
-      {/* <Avatar
+        {/* <Avatar
         uid={user?.id || ""}
         url={avatar_url}
         size={150}
@@ -120,25 +117,17 @@ export default function AccountForm({ user }: { user: User | null }) {
           updateProfile({ fullname, username, website, avatar_url: url })
         }}
       /> */}
-      <div>
-        <button
-          className="button primary block"
-          onClick={() =>
-            updateProfile({ fullname, username, website, avatar_url })
-          }
-          disabled={loading}
-        >
-          {loading ? "Loading ..." : "Update"}
-        </button>
-      </div>
-
-      <div>
-        <form action="/auth/signout" method="post">
-          <button className="button block" type="submit">
-            Sign out
-          </button>
-        </form>
-      </div>
-    </div>
+        <Center>
+          <Button
+            onClick={() =>
+              updateProfile({ fullname, username, website, avatar_url })
+            }
+            disabled={loading}
+          >
+            {loading ? "Loading ..." : "Update"}
+          </Button>
+        </Center>
+      </Stack>
+    </Box>
   )
 }

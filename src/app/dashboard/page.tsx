@@ -6,6 +6,7 @@ import { useUser } from "@supabase/auth-helpers-react"
 import { useState, useEffect } from "react"
 import {
   Button,
+  Card,
   Center,
   Container,
   Group,
@@ -75,34 +76,35 @@ export default function Reports() {
         <Title order={1}>Dashboard</Title>
         <Chart data={tracks} />
         {tracks.map((track, index) => (
-          <div key={index}>
-            <Title order={3}>Report for {track.created_at}</Title>
+          <Card w="60%" key={index}>
             <Ratings value={track.rating} />
             <Text>{track.comment}</Text>
             <Text>{track.learned_thing}</Text>
-            <ActionIcon
-              onClick={() => {
-                router.push(`/report/${track.id}`)
-              }}
-            >
-              <IconAdjustments />
-            </ActionIcon>
-            <ActionIcon
-              onClick={async () => {
-                const { error } = await supabase
-                  .from("tracks")
-                  .delete()
-                  .eq("id", track.id)
-                if (error) {
-                  console.error("Error deleting track: ", error)
-                } else {
-                  await getTracks()
-                }
-              }}
-            >
-              <IconSquareX />
-            </ActionIcon>
-          </div>
+            {/* <Group>
+              <ActionIcon
+                onClick={() => {
+                  router.push(`/report/${track.id}`)
+                }}
+              >
+                <IconAdjustments />
+              </ActionIcon>
+              <ActionIcon
+                onClick={async () => {
+                  const { error } = await supabase
+                    .from("tracks")
+                    .delete()
+                    .eq("id", track.id)
+                  if (error) {
+                    console.error("Error deleting track: ", error)
+                  } else {
+                    await getTracks()
+                  }
+                }}
+              >
+                <IconSquareX />
+              </ActionIcon>
+            </Group> */}
+          </Card>
         ))}
       </Stack>
     </Container>
