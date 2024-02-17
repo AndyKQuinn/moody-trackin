@@ -1,22 +1,10 @@
 "use client"
 import { useCallback, useEffect, useState } from "react"
 import { Database } from "../database.types"
-import {
-  User,
-  createClientComponentClient,
-} from "@supabase/auth-helpers-nextjs"
-import {
-  TextInput,
-  Checkbox,
-  Button,
-  Center,
-  Group,
-  Box,
-  Stack,
-} from "@mantine/core"
-import { useForm } from "@mantine/form"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { TextInput, Button, Center, Box, Stack } from "@mantine/core"
 import { useUser } from "@supabase/auth-helpers-react"
-// import Avatar from "./avatar"
+import { toast } from "react-hot-toast"
 
 export default function AccountForm() {
   const supabase = createClientComponentClient<Database>()
@@ -49,8 +37,7 @@ export default function AccountForm() {
         setAvatarUrl(data.avatar_url)
       }
     } catch (error) {
-      alert("Error loading user data!")
-      console.log("error is: ", error)
+      toast.error("Error loading user data!")
     } finally {
       setLoading(false)
     }
@@ -84,10 +71,9 @@ export default function AccountForm() {
         updated_at: new Date().toISOString(),
       })
       if (error) throw error
-      alert("Profile updated!")
+      toast.success("Profile updated!")
     } catch (error) {
-      alert("Error updating the data!")
-      console.log("error: ", error)
+      toast.error("Error updating the data!")
     } finally {
       setLoading(false)
     }
@@ -112,15 +98,6 @@ export default function AccountForm() {
           value={website || ""}
           onChange={(e) => setWebsite(e.currentTarget.value)}
         />
-        {/* <Avatar
-        uid={user?.id || ""}
-        url={avatar_url}
-        size={150}
-        onUpload={(url) => {
-          setAvatarUrl(url)
-          updateProfile({ fullname, username, website, avatar_url: url })
-        }}
-      /> */}
         <Center>
           <Button
             onClick={() =>
