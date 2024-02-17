@@ -60,8 +60,8 @@ export default function HomeView() {
       >
         <Stack align="center">
           <Text>It appears you already entered a value today</Text>
+          <Button mt={8}>View Entries</Button>
         </Stack>
-        <Button>View Entries</Button>
       </Box>
     )
   }
