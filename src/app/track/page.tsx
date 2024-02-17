@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useUser } from "@supabase/auth-helpers-react"
 import { useRouter } from "next/navigation"
-import { Box, Container, Stack, Text, Title } from "@mantine/core"
+import { Box, Button, Container, Stack, Text, Title } from "@mantine/core"
 import Input from "./Input"
 import LoadingSpinner from "@/components/LoadingSpinner"
 
@@ -36,13 +36,11 @@ export default function HomeView() {
   }
 
   useEffect(() => {
-    getTracksForToday()
-  }, [user])
-
-  useEffect(() => {
     if (!user) {
       return router.push("/")
     }
+
+    getTracksForToday()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
@@ -60,7 +58,10 @@ export default function HomeView() {
           minHeight: "80vh",
         }}
       >
-        <Text>It appears you already entered a value today</Text>
+        <Stack align="center">
+          <Text>It appears you already entered a value today</Text>
+        </Stack>
+        <Button>View Entries</Button>
       </Box>
     )
   }

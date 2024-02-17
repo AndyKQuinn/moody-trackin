@@ -2,13 +2,9 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import {
-  useSessionContext,
-  useSupabaseClient,
-} from "@supabase/auth-helpers-react"
+import { useSessionContext } from "@supabase/auth-helpers-react"
 import { Box, Stack, Text, Title } from "@mantine/core"
 import Header from "@/components/layout/Header/Header"
-// import LoadingSpinner from "@/components/LoadingSpinner"
 
 function LandingView() {
   return (
@@ -39,6 +35,7 @@ export default function SiteIndex() {
     if (session) {
       return router.push("/track")
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session])
 
   return <LandingView />

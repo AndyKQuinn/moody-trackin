@@ -21,6 +21,7 @@ bun i
 
 ```shell
 # Run code
+
 npm run dev
 yarn dev
 pnpm run dev
@@ -29,7 +30,9 @@ bun run dev
 
 ### Setup .env file
 
-```js
+```shell
+# .env or .env.local
+
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=

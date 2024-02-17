@@ -24,32 +24,17 @@ import { IconAdjustments, IconSquareX } from "@tabler/icons-react"
 import LoadingSpinner from "@/components/LoadingSpinner"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 
-// export type Report = {
-//   learned_thing: string
-//   comment: string
-//   date: string
-//   id: number
-//   rating: number
-//   user_id: number
-// }
-
 export default function Reports() {
   const supabase = createClientComponentClient<any>()
   const user = useUser()
 
   const [tracks, setTracks] = useState<any[]>([])
 
-  // const [username, setUsername] = useState("")
-  // const [isLoading, setIsLoading] = useState(true)
-  // const [reports, setReports] = useState<Report[]>([])
-  // const [fetchFailed, setFetchFailed] = useState(false)
-
-  const router = useRouter()
-
   useEffect(() => {
     if (user) {
       getTracks()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   async function getTracks() {
@@ -80,30 +65,6 @@ export default function Reports() {
             <Ratings value={track.rating} />
             <Text>{track.comment}</Text>
             <Text>{track.learned_thing}</Text>
-            {/* <Group>
-              <ActionIcon
-                onClick={() => {
-                  router.push(`/report/${track.id}`)
-                }}
-              >
-                <IconAdjustments />
-              </ActionIcon>
-              <ActionIcon
-                onClick={async () => {
-                  const { error } = await supabase
-                    .from("tracks")
-                    .delete()
-                    .eq("id", track.id)
-                  if (error) {
-                    console.error("Error deleting track: ", error)
-                  } else {
-                    await getTracks()
-                  }
-                }}
-              >
-                <IconSquareX />
-              </ActionIcon>
-            </Group> */}
           </Card>
         ))}
       </Stack>
