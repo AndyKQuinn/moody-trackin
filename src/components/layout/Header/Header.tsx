@@ -69,7 +69,10 @@ export default function Header() {
                   key={link.link}
                   href={link.link}
                   className={classes.link}
-                  data-active={active === link.link || undefined}
+                  // data-active={active === link.link || undefined}
+                  onClick={() => {
+                    setActive(link.link)
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -100,22 +103,12 @@ export default function Header() {
       >
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
           <Divider my="sm" />
-
-          <Link href="/track" className={classes.link}>
-            Track My Day
-          </Link>
-          <Link href="/dashboard" className={classes.link}>
-            Dashboard
-          </Link>
-          <Link href="/account" className={classes.link}>
-            Account
-          </Link>
-          <Link href="/feedback" className={classes.link}>
-            Feedback
-          </Link>
-
+          {links.map((link) => (
+            <Link key={link.link} href={link.link} className={classes.link}>
+              {link.label}
+            </Link>
+          ))}
           <Divider my="sm" />
-
           <Group justify="center" grow pb="xl" px="md">
             <LoginOrLogoutButton />
           </Group>

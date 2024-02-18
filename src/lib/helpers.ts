@@ -1,5 +1,15 @@
 import { Price } from "../../types";
 
+// strips time from date/time
+export function convertDateTimeToDate(data: any) {
+    return data?.map((item: any) => {
+      return {
+        ...item,
+        created_at: new Date(item.created_at).toLocaleDateString(),
+      }
+    })
+  }
+
 export const getURL = () => {
     let url =
         process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your site URL in production env.

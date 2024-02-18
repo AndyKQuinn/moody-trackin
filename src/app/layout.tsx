@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans } from "next/font/google"
 import SupabaseProvider from "@/providers/SupabaseProvider"
 import UserProvider from "@/providers/UserProvider"
 import { ColorSchemeScript } from "@mantine/core"
+import { Toaster } from "react-hot-toast"
 
 const font = Plus_Jakarta_Sans({ subsets: ["latin"] })
 
@@ -22,10 +23,13 @@ export default async function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className={font.className} style={{ height: "100vh" }}>
+      <body className={font.className}>
         <ThemeProvider>
           <SupabaseProvider>
-            <UserProvider>{children}</UserProvider>
+            <UserProvider>
+              <Toaster position="bottom-center" />
+              {children}
+            </UserProvider>
           </SupabaseProvider>
         </ThemeProvider>
       </body>

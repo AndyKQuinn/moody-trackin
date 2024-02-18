@@ -8,9 +8,9 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <section>
+    <>
       <Header />
       {children}
-    </section>
+    </>
   )
 }

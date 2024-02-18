@@ -59,15 +59,15 @@ export default function Input(props: Props) {
   return (
     <>
       <Stack gap="lg">
-        <Title order={1}>How do you feel today?</Title>
+        <Title order={1}>How do you feel?</Title>
         <Center>
           <Rating value={rating} onUpdate={setRating} />
         </Center>
         <Title order={3} className="text-xl font-bold">
-          Comments
+          Comments?
         </Title>
         <Textarea id="comment" onChange={(e) => setComment(e.target.value)} />
-        <Title order={3}>Learn anything new today?</Title>
+        <Title order={3}>Learn anything?</Title>
         <Textarea
           id="anythingNew"
           onChange={(e) => setLearnedThing(e.target.value)}

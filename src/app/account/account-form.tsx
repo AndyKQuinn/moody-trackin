@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react"
 import { Database } from "../database.types"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
-import { TextInput, Button, Center, Box, Stack } from "@mantine/core"
+import { Button, Center, TextInput, Stack } from "@mantine/core"
 import { useUser } from "@supabase/auth-helpers-react"
 import { toast } from "react-hot-toast"
 
@@ -71,18 +71,19 @@ export default function AccountForm() {
         updated_at: new Date().toISOString(),
       })
       if (error) throw error
-      toast.success("Profile updated!")
     } catch (error) {
       toast.error("Error updating the data!")
     } finally {
+      console.log("Success")
+      toast.success("Profile updated!")
       setLoading(false)
     }
   }
 
   return (
-    <Box maw={340} mx="auto" p={4}>
+    <Center maw={640} mx="auto" h="80vh">
       <Stack>
-        <TextInput label="Email" value={user?.email || ""} disabled />
+        <TextInput label="Email" value={user?.email || ""} disabled w={400} />
         <TextInput
           label="Full Name"
           value={fullname || ""}
@@ -109,6 +110,6 @@ export default function AccountForm() {
           </Button>
         </Center>
       </Stack>
-    </Box>
+    </Center>
   )
 }

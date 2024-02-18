@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts"
+import { convertDateTimeToDate } from "@/lib/helpers"
 
 type Props = {
   data: any
@@ -15,20 +16,10 @@ type Props = {
 export default function Chart(props: Props) {
   const { data } = props
 
-  // strips time from date/time
-  function formatData(data: any) {
-    return data.map((item: any) => {
-      return {
-        ...item,
-        created_at: new Date(item.created_at).toLocaleDateString(),
-      }
-    })
-  }
-
   return (
     <ResponsiveContainer height={250}>
       <LineChart
-        data={formatData(data)}
+        data={convertDateTimeToDate(data)}
         margin={{
           top: 5,
           right: 40,
