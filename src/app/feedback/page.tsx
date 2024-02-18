@@ -27,13 +27,14 @@ export default function FeedbackForm() {
   }
 
   return (
-    <Box maw={600} mx="auto" pt={4}>
+    <Center h="80vh" maw={600} mx="auto">
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Textarea
           withAsterisk
           label="Feedback"
-          placeholder="This feature is currently disabled, but will be available soon!"
+          placeholder="This feature is currently disabled"
           size="xl"
+          w="600"
           {...form.getInputProps("feedback")}
         />
 
@@ -43,6 +44,6 @@ export default function FeedbackForm() {
           </Button>
         </Center>
       </form>
-    </Box>
+    </Center>
   )
 }

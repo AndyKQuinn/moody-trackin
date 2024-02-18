@@ -22,7 +22,7 @@ export default async function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className={font.className}>
+      <body className={font.className} style={{ height: "100vh" }}>
         <ThemeProvider>
           <SupabaseProvider>
             <UserProvider>{children}</UserProvider>

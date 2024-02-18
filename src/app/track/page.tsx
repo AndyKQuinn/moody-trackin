@@ -3,7 +3,15 @@
 import { useEffect, useState } from "react"
 import { useUser } from "@supabase/auth-helpers-react"
 import { useRouter } from "next/navigation"
-import { Box, Button, Container, Stack, Text, Title } from "@mantine/core"
+import {
+  Box,
+  Button,
+  Center,
+  Container,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core"
 import Input from "./Input"
 import LoadingSpinner from "@/components/LoadingSpinner"
 
@@ -50,27 +58,20 @@ export default function HomeView() {
 
   if (extryExistsForToday) {
     return (
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "80vh",
-        }}
-      >
+      <Center h="80vh" maw={600} mx="auto">
         <Stack align="center">
           <Text>It appears you already entered a value today</Text>
           <Button mt={8}>View Entries</Button>
         </Stack>
-      </Box>
+      </Center>
     )
   }
 
   if (user) {
     return (
-      <Container>
+      <Center h="80vh" maw={800} mx="auto">
         <Input user={user} />
-      </Container>
+      </Center>
     )
   }
 

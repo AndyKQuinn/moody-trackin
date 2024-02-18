@@ -8,9 +8,9 @@ export default function FeedbackLayout({
   children: React.ReactNode
 }) {
   return (
-    <section>
+    <>
       <Header />
       {children}
-    </section>
+    </>
   )
 }

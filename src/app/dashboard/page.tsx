@@ -1,28 +1,19 @@
 "use client"
 
-// import { Report } from "@/app/customTypes"
-import { checkSession, getAllReportsServer } from "./userLogic"
 import { useUser } from "@supabase/auth-helpers-react"
 import { useState, useEffect } from "react"
 import {
-  // Button,
   Card,
-  // Center,
   Container,
   Flex,
-  // Group,
   Stack,
-  // Table,
   Text,
   TextInput,
   Title,
 } from "@mantine/core"
-// import { useRouter } from "next/navigation"
 import Chart from "./chart"
 import Ratings from "./ratings"
 
-// import { ActionIcon } from "@mantine/core"
-// import { IconAdjustments, IconSquareX } from "@tabler/icons-react"
 import LoadingSpinner from "@/components/LoadingSpinner"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 

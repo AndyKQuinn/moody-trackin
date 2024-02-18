@@ -57,29 +57,27 @@ export default function Input(props: Props) {
   }
 
   return (
-    <div>
-      <Container size="sm" pt={16}>
-        <Stack gap="lg">
-          <Title order={1}>How do you feel today?</Title>
-          <Center>
-            <Rating value={rating} onUpdate={setRating} />
-          </Center>
-          <Title order={3} className="text-xl font-bold">
-            Comments
-          </Title>
-          <Textarea id="comment" onChange={(e) => setComment(e.target.value)} />
-          <Title order={3}>Learn anything new today?</Title>
-          <Textarea
-            id="anythingNew"
-            onChange={(e) => setLearnedThing(e.target.value)}
-          />
-          <Center>
-            <Group>
-              <Button onClick={handleSubmit}>Submit</Button>
-            </Group>
-          </Center>
-        </Stack>
-      </Container>
-    </div>
+    <>
+      <Stack gap="lg">
+        <Title order={1}>How do you feel today?</Title>
+        <Center>
+          <Rating value={rating} onUpdate={setRating} />
+        </Center>
+        <Title order={3} className="text-xl font-bold">
+          Comments
+        </Title>
+        <Textarea id="comment" onChange={(e) => setComment(e.target.value)} />
+        <Title order={3}>Learn anything new today?</Title>
+        <Textarea
+          id="anythingNew"
+          onChange={(e) => setLearnedThing(e.target.value)}
+        />
+        <Center>
+          <Group>
+            <Button onClick={handleSubmit}>Submit</Button>
+          </Group>
+        </Center>
+      </Stack>
+    </>
   )
 }
