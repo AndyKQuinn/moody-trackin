@@ -7,10 +7,15 @@ export default function AccountLayout({
 }: {
   children: React.ReactNode
 }) {
+  const style = {
+    background: "radial-gradient(at center, #764770, #49055F)",
+    height: "100vh",
+  }
+
   return (
-    <section>
+    <div style={style}>
       <Header />
       {children}
-    </section>
+    </div>
   )
 }

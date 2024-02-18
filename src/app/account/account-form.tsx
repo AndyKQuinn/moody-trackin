@@ -5,6 +5,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Button, Center, TextInput, Stack } from "@mantine/core"
 import { useUser } from "@supabase/auth-helpers-react"
 import { toast } from "react-hot-toast"
+import ColorSchemeToggle from "@/components/layout/ColorSchemeToggle"
 
 export default function AccountForm() {
   const supabase = createClientComponentClient<Database>()
@@ -83,6 +84,7 @@ export default function AccountForm() {
   return (
     <Center maw={640} mx="auto" h="80vh">
       <Stack>
+        <ColorSchemeToggle />
         <TextInput label="Email" value={user?.email || ""} disabled w={400} />
         <TextInput
           label="Full Name"
@@ -99,6 +101,7 @@ export default function AccountForm() {
           value={website || ""}
           onChange={(e) => setWebsite(e.currentTarget.value)}
         />
+
         <Center>
           <Button
             onClick={() =>
