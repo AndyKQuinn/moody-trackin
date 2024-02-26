@@ -9,7 +9,7 @@ export default function DashboardLayout({
 }) {
   const style = {
     background: "radial-gradient(at center, #764770, #49055F)",
-    height: "100vh",
+    height: "100%",
   }
 
   return (

@@ -21,7 +21,7 @@ function LandingView() {
       >
         <Stack align="center">
           <Title order={1}>Moody Trackin</Title>
-          <Title order={3}>A simple daily mood and learning tracker</Title>
+          <Title order={4}>Track your mood and things you learn</Title>
           <Button href="/sign-in" component={Link} size="md">
             Sign In
           </Button>

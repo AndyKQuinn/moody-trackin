@@ -14,8 +14,8 @@ export default function AccountForm() {
   const [loading, setLoading] = useState(true)
   const [fullname, setFullname] = useState<string | null>(null)
   const [username, setUsername] = useState<string | null>(null)
-  const [website, setWebsite] = useState<string | null>(null)
-  const [avatar_url, setAvatarUrl] = useState<string | null>(null)
+  // const [website, setWebsite] = useState<string | null>(null)
+  // const [avatar_url, setAvatarUrl] = useState<string | null>(null)
 
   const getProfile = useCallback(async () => {
     try {
@@ -23,7 +23,7 @@ export default function AccountForm() {
 
       const { data, error, status } = await supabase
         .from("profiles")
-        .select(`full_name, username, website, avatar_url`)
+        .select(`full_name, username`)
         .eq("id", user?.id || "")
         .single()
 
@@ -34,11 +34,12 @@ export default function AccountForm() {
       if (data) {
         setFullname(data.full_name)
         setUsername(data.username)
-        setWebsite(data.website)
-        setAvatarUrl(data.avatar_url)
+        // setWebsite(data.website)
+        // setAvatarUrl(data.avatar_url)
       }
     } catch (error) {
-      toast.error("Error loading user data!")
+      toast.error("Error updating user data!")
+      console.error("Error updating user data", error)
     } finally {
       setLoading(false)
     }
@@ -52,13 +53,13 @@ export default function AccountForm() {
 
   async function updateProfile({
     username,
-    website,
-    avatar_url,
-  }: {
+  }: // website,
+  // avatar_url,
+  {
     username: string | null
     fullname: string | null
-    website: string | null
-    avatar_url: string | null
+    // website: string | null
+    // avatar_url: string | null
   }) {
     try {
       setLoading(true)
@@ -67,16 +68,17 @@ export default function AccountForm() {
         id: user?.id as string,
         full_name: fullname,
         username,
-        website,
-        avatar_url,
+        // website,
+        // avatar_url,
         updated_at: new Date().toISOString(),
       })
-      if (error) throw error
-    } catch (error) {
-      toast.error("Error updating the data!")
+      if (error) {
+        toast.error("Error updating profile")
+        throw error
+      } else {
+        toast.success("Profile updated!")
+      }
     } finally {
-      console.log("Success")
-      toast.success("Profile updated!")
       setLoading(false)
     }
   }
@@ -96,17 +98,15 @@ export default function AccountForm() {
           value={username || ""}
           onChange={(e) => setUsername(e.currentTarget.value)}
         />
-        <TextInput
+        {/* <TextInput
           label="Website"
           value={website || ""}
           onChange={(e) => setWebsite(e.currentTarget.value)}
-        />
+        /> */}
 
         <Center>
           <Button
-            onClick={() =>
-              updateProfile({ fullname, username, website, avatar_url })
-            }
+            onClick={() => updateProfile({ fullname, username })}
             disabled={loading}
           >
             {loading ? "Loading ..." : "Update"}

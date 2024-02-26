@@ -1,14 +1,6 @@
 "use client"
 
-import {
-  Center,
-  TextInput,
-  Textarea,
-  Checkbox,
-  Button,
-  Group,
-  Box,
-} from "@mantine/core"
+import { Center, Textarea, Button } from "@mantine/core"
 import { useForm } from "@mantine/form"
 import { toast } from "react-hot-toast"
 
