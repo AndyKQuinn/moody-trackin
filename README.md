@@ -1,4 +1,4 @@
-# App Thing
+# Moody Trackin
 
 ## 🛠️ Tech Stack
 
