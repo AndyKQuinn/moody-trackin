@@ -1,5 +1,7 @@
 # Moody Trackin
 
+[Website](https://moody-trackin.vercel.app/)
+
 ## 🛠️ Tech Stack
 
 - [Next.js](https://nextjs.org/)
@@ -10,7 +12,7 @@
 
 ## Local Development
 
-```shell
+```sh
 # Install packages
 
 npm i
@@ -19,7 +21,7 @@ pnpm i
 bun i
 ```
 
-```shell
+```sh
 # Run code
 
 npm run dev
@@ -30,7 +32,7 @@ bun run dev
 
 ### Setup .env file
 
-```shell
+```sh
 # .env or .env.local
 
 NEXT_PUBLIC_SUPABASE_URL=
@@ -48,6 +50,20 @@ Use `database.sql` file
 
 ### Start the app
 
-```shell
+```sh
 npm run dev
+```
+
+### Run supabase locally
+
+```sh
+supabase start
+```
+
+```sh
+supabase stop
+```
+
+```sh
+supabase db reset
 ```

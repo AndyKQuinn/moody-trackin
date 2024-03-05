@@ -21,17 +21,17 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="dark" />
       </head>
       <body className={font.className}>
-        <ThemeProvider>
-          <SupabaseProvider>
-            <UserProvider>
+        <SupabaseProvider>
+          <UserProvider>
+            <ThemeProvider>
               <Toaster position="bottom-center" />
               {children}
-            </UserProvider>
-          </SupabaseProvider>
-        </ThemeProvider>
+            </ThemeProvider>
+          </UserProvider>
+        </SupabaseProvider>
       </body>
     </html>
   )

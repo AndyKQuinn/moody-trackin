@@ -5,9 +5,7 @@ import { useState, useEffect } from "react"
 import { Card, Flex, SimpleGrid, Stack, Text, Title } from "@mantine/core"
 import Chart from "./chart"
 import Ratings from "./ratings"
-import { convertDateTimeToDate } from "@/lib/helpers"
 
-import LoadingSpinner from "@/components/LoadingSpinner"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 
 export default function Reports() {
@@ -31,10 +29,6 @@ export default function Reports() {
     console.log("Tracks: ", tracks.data)
 
     setTracks(tracks.data || [])
-  }
-
-  if (!user) {
-    return <LoadingSpinner />
   }
 
   if (user && !tracks) {

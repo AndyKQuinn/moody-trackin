@@ -3,15 +3,7 @@
 import { useEffect, useState } from "react"
 import { useUser } from "@supabase/auth-helpers-react"
 import { useRouter } from "next/navigation"
-import {
-  Box,
-  Button,
-  Center,
-  Container,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core"
+import { Box, Button, Center, Container, Stack, Text } from "@mantine/core"
 import Input from "./Input"
 import LoadingSpinner from "@/components/LoadingSpinner"
 
@@ -68,12 +60,6 @@ export default function HomeView() {
   }
 
   if (user) {
-    return (
-      <Center h="80vh" maw={800} mx="auto">
-        <Input user={user} />
-      </Center>
-    )
+    return <Input user={user} />
   }
-
-  return router.push("/")
 }

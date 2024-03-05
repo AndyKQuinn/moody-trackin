@@ -1,16 +1,15 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { useSessionContext } from "@supabase/auth-helpers-react"
-import { Box, Button, Stack, Text, Title } from "@mantine/core"
-import Header from "@/components/layout/Header/Header"
+import { Box, Button, Stack, Title } from "@mantine/core"
 import Link from "next/link"
+import { useUser } from "@/hooks/useUser"
+import LoadingSpinner from "@/components/LoadingSpinner"
 
 function LandingView() {
   return (
     <div>
-      <Header />
       <Box
         style={{
           display: "flex",
@@ -21,7 +20,7 @@ function LandingView() {
       >
         <Stack align="center">
           <Title order={1}>Moody Trackin</Title>
-          <Title order={4}>Track your mood and things you learn</Title>
+          <Title order={4}>Track your mood and things that you learn</Title>
           <Button href="/sign-in" component={Link} size="md">
             Sign In
           </Button>
@@ -32,15 +31,22 @@ function LandingView() {
 }
 
 export default function SiteIndex() {
-  const { session } = useSessionContext()
   const router = useRouter()
+  const user = useUser()
+  const [isLoading, setIsLoading] = useState(true)
+
+  console.log("User: ", user)
 
   useEffect(() => {
-    if (session) {
+    if (user) {
       return router.push("/track")
+    } else {
+      setIsLoading(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session])
+  }, [user])
+
+  if (isLoading) return <LoadingSpinner />
 
   return <LandingView />
 }

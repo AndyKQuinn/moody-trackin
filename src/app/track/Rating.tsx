@@ -13,8 +13,8 @@ type Props = {
 }
 
 const getIconStyle = (color?: string) => ({
-  width: rem(48),
-  height: rem(48),
+  // width: rem(48),
+  // height: rem(48),
   color: color ? `var(--mantine-color-${color}-7)` : undefined,
 })
 

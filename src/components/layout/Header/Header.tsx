@@ -11,6 +11,7 @@ import {
 } from "@mantine/core"
 import { useState } from "react"
 import { useDisclosure } from "@mantine/hooks"
+import { usePathname } from "next/navigation"
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 import Link from "next/link"
 import classes from "./Header.module.css"
@@ -24,7 +25,8 @@ const links = [
 
 export default function Header() {
   const user = useUser()
-  const [active, setActive] = useState(links[0].link)
+  const pathname = usePathname()
+  const [active, setActive] = useState(pathname)
 
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false)
@@ -69,7 +71,7 @@ export default function Header() {
                   key={link.link}
                   href={link.link}
                   className={classes.link}
-                  // data-active={active === link.link || undefined}
+                  data-active={active === link.link || undefined}
                   onClick={() => {
                     setActive(link.link)
                   }}
@@ -104,7 +106,12 @@ export default function Header() {
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
           <Divider my="sm" />
           {links.map((link) => (
-            <Link key={link.link} href={link.link} className={classes.link}>
+            <Link
+              key={link.link}
+              href={link.link}
+              className={classes.link}
+              data-active={active === link.link || undefined}
+            >
               {link.label}
             </Link>
           ))}

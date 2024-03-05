@@ -6,6 +6,7 @@ import {
   Button,
   Center,
   Container,
+  Flex,
   Group,
   Stack,
   Textarea,
@@ -17,7 +18,7 @@ import {
 } from "@supabase/auth-helpers-nextjs"
 import { useRouter } from "next/navigation"
 import Header from "@/components/layout/Header/Header"
-import Rating from "@/components/Rating/Rating"
+import Rating from "@/app/track/Rating"
 import { toast } from "react-hot-toast"
 
 type Props = {
@@ -51,33 +52,34 @@ export default function Input(props: Props) {
 
     if (error) {
       toast.error("Error submitting track")
+      console.log("Error submitting track", error)
     } else {
       router.push("/dashboard")
     }
   }
 
   return (
-    <>
-      <Stack gap="lg">
-        <Title order={1}>How do you feel?</Title>
-        <Center>
+    <Container h="80vh" size="sm" mx="auto" p={8}>
+      {/* <Stack gap="lg" align="center" maw={800}> */}
+      <Stack gap="lg" p={8}>
+        <Group>
+          <div>How do you feel?</div>
           <Rating value={rating} onUpdate={setRating} />
-        </Center>
-        <Title order={3} className="text-xl font-bold">
-          Comments?
-        </Title>
-        <Textarea id="comment" onChange={(e) => setComment(e.target.value)} />
-        <Title order={3}>Learn anything?</Title>
+        </Group>
+        <Textarea
+          id="comment"
+          label="Comment"
+          onChange={(e) => setComment(e.target.value)}
+        />
         <Textarea
           id="anythingNew"
+          label="Learn anything new?"
           onChange={(e) => setLearnedThing(e.target.value)}
         />
         <Center>
-          <Group>
-            <Button onClick={handleSubmit}>Submit</Button>
-          </Group>
+          <Button onClick={handleSubmit}>Submit</Button>
         </Center>
       </Stack>
-    </>
+    </Container>
   )
 }
