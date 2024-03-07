@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import { useUser } from "@supabase/auth-helpers-react"
 import { useRouter } from "next/navigation"
-import { Box, Button, Center, Container, Stack, Text } from "@mantine/core"
 import Input from "./Input"
 import LoadingSpinner from "@/components/LoadingSpinner"
 
@@ -14,7 +13,7 @@ export default function HomeView() {
   const user = useUser()
   const router = useRouter()
 
-  const [extryExistsForToday, setEntryExistsForToday] = useState(false)
+  const [entryExistsForToday, setEntryExistsForToday] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   async function getTracksForToday() {
@@ -36,30 +35,18 @@ export default function HomeView() {
   }
 
   useEffect(() => {
-    if (!user) {
-      return router.push("/")
+    if (user) {
+      getTracksForToday()
     }
-
-    getTracksForToday()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
-  if (isLoading) {
-    return <LoadingSpinner />
-  }
-
-  if (extryExistsForToday) {
-    return (
-      <Center h="80vh" maw={600} mx="auto">
-        <Stack align="center">
-          <Text>It appears you already entered a value today</Text>
-          <Button mt={8}>View Entries</Button>
-        </Stack>
-      </Center>
-    )
+  if (!isLoading && !user) {
+    router.push("/sign-in")
   }
 
   if (user) {
-    return <Input user={user} />
+    return <Input user={user} entryExists={entryExistsForToday} />
   }
+
+  return <LoadingSpinner />
 }

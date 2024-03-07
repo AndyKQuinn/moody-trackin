@@ -9,6 +9,7 @@ import {
   Flex,
   Group,
   Stack,
+  Text,
   Textarea,
   Title,
 } from "@mantine/core"
@@ -23,12 +24,13 @@ import { toast } from "react-hot-toast"
 
 type Props = {
   user: User
+  entryExists: boolean
 }
 
 export default function Input(props: Props) {
   const supabase = createClientComponentClient<any>()
 
-  const { user } = props
+  const { user, entryExists } = props
 
   const router = useRouter()
 
@@ -41,7 +43,7 @@ export default function Input(props: Props) {
     const todayWithoutTime = new Date(today.setHours(0, 0, 0, 0))
 
     const track = {
-      user_id: user.id,
+      user_id: user?.id || "",
       rating: rating,
       comment: comment,
       learned_thing: learnedThing,
@@ -54,13 +56,22 @@ export default function Input(props: Props) {
       toast.error("Error submitting track")
       console.log("Error submitting track", error)
     } else {
-      router.push("/dashboard")
+      router.push("/entries")
     }
   }
 
+  if (entryExists) {
+    return (
+      <Center h="80vh" maw={600} mx="auto">
+        <Stack align="center">
+          <Text>It appears you already entered a value today</Text>
+        </Stack>
+      </Center>
+    )
+  }
+
   return (
-    <Container h="80vh" size="sm" mx="auto" p={8}>
-      {/* <Stack gap="lg" align="center" maw={800}> */}
+    <Container h="80vh" size="xs" mx="auto" p={8}>
       <Stack gap="lg" p={8}>
         <Group>
           <div>How do you feel?</div>

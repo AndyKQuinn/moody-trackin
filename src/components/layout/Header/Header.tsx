@@ -17,10 +17,8 @@ import Link from "next/link"
 import classes from "./Header.module.css"
 
 const links = [
-  { link: "/track", label: "Track" },
-  { link: "/dashboard", label: "Dashboard" },
-  { link: "/account", label: "Account" },
-  { link: "/feedback", label: "Feedback" },
+  { link: "/track", label: "Track My Day" },
+  { link: "/entries", label: "View Entries" },
 ]
 
 export default function Header() {
@@ -99,7 +97,7 @@ export default function Header() {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title="Navigation"
+        title="MoodyTrackin"
         hiddenFrom="sm"
         zIndex={1000000}
       >
