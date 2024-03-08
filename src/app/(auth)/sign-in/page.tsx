@@ -8,7 +8,7 @@ import {
 } from "@supabase/auth-helpers-react"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
-import { Box, Center, Container, Stack, Title } from "@mantine/core"
+import { Center, Stack, Title } from "@mantine/core"
 
 const SignIn = () => {
   const supabaseClient = useSupabaseClient()
@@ -17,7 +17,6 @@ const SignIn = () => {
   const router = useRouter()
 
   useEffect(() => {
-    console.log("Session: ", session)
     if (session) {
       router.push("/")
     }

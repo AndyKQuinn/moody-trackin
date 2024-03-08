@@ -38,6 +38,7 @@ export default function HomeView() {
     if (user) {
       getTracksForToday()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   if (!isLoading && !user) {
