@@ -5,5 +5,5 @@ export default function TrackLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <div>{children}</div>
+  return children
 }

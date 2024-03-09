@@ -2,7 +2,16 @@
 
 import { useUser } from "@supabase/auth-helpers-react"
 import { useState, useEffect } from "react"
-import { Card, Flex, SimpleGrid, Stack, Text, Title } from "@mantine/core"
+import {
+  Card,
+  Center,
+  Flex,
+  Pagination,
+  SimpleGrid,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core"
 import Chart from "./chart"
 import Ratings from "./ratings"
 
@@ -26,6 +35,7 @@ export default function Reports() {
       .from("tracks")
       .select("*")
       .eq("user_id", user?.id)
+      .order("created_at", { ascending: false })
     console.log("Tracks: ", tracks.data)
 
     setTracks(tracks.data || [])
@@ -43,11 +53,14 @@ export default function Reports() {
       pt={10}
     >
       <Stack align="center">
-        <Title order={1}>Dashboard</Title>
+        <Title order={1}>My Entries</Title>
         <Chart data={tracks} />
       </Stack>
 
       <Stack gap={4}>
+        <Center>
+          <Pagination total={10} />
+        </Center>
         {tracks.map((track, index) => {
           const date = new Date(track.created_at).toLocaleDateString()
           return (

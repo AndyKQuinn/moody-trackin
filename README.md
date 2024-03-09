@@ -1,5 +1,7 @@
 # Moody Trackin
 
+Simply daily tracker application to keep tabs on mood and things that you learn
+
 [Website](https://moody-trackin.vercel.app/)
 
 ## 🛠️ Tech Stack
@@ -46,7 +48,7 @@ STRIPE_WEBHOOK_SECRET=
 
 ### Add SQL Tables
 
-Use `database.sql` file
+Use the `database.sql` file to seed the database tables
 
 ### Start the app
 
@@ -54,7 +56,7 @@ Use `database.sql` file
 npm run dev
 ```
 
-### Run supabase locally
+### Run supabase locally (requires Docker)
 
 ```sh
 supabase start

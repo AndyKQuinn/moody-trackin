@@ -27,8 +27,8 @@ export default function Chart(props: Props) {
           bottom: 5,
         }}
       >
-        <XAxis dataKey="created_at" />
-        <YAxis domain={[0, 5]} ticks={[1, 2, 3, 4, 5]} />
+        <XAxis dataKey="created_at" stroke="#FFF" />
+        <YAxis domain={[0, 5]} ticks={[1, 2, 3, 4, 5]} stroke="#FFF" />
         <Tooltip />
         <Line type="monotone" dataKey="rating" stroke="#FFF" />
       </LineChart>
