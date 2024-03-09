@@ -14,7 +14,6 @@ export function ThemeProvider({ children, ...props }: any) {
   const style = {
     background: "radial-gradient(at center, #764770, #49055F)",
     height: "100%",
-    padding: 8,
   }
 
   return (

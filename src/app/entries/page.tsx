@@ -50,7 +50,7 @@ export default function Reports() {
       cols={{ base: 1, sm: 2 }}
       spacing={{ base: 10, sm: "xl" }}
       verticalSpacing={{ base: "md", sm: "xl" }}
-      pt={10}
+      py={10}
     >
       <Stack align="center">
         <Title order={1}>My Entries</Title>
@@ -59,7 +59,7 @@ export default function Reports() {
 
       <Stack gap={4}>
         <Center>
-          <Pagination total={10} />
+          <Pagination total={10} disabled />
         </Center>
         {tracks.map((track, index) => {
           const date = new Date(track.created_at).toLocaleDateString()
