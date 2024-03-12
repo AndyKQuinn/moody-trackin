@@ -15,7 +15,7 @@ function LandingView() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          minHeight: "80vh",
+          minHeight: "100vh",
         }}
       >
         <Stack align="center">

@@ -20,7 +20,7 @@ export default function LandingView() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          minHeight: "80vh",
+          minHeight: "100%",
         }}
       >
         <Stack align="center">

@@ -7,7 +7,7 @@ export default function LoadingSpinner() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "80vh",
+        minHeight: "100vh",
       }}
     >
       <Center>

@@ -20,6 +20,7 @@ import {
 import { useRouter } from "next/navigation"
 import Header from "@/components/layout/Header/Header"
 import Rating from "@/app/track/Rating"
+import LoadingSpinner from "@/components/LoadingSpinner"
 import { toast } from "react-hot-toast"
 
 type Props = {
@@ -60,18 +61,8 @@ export default function Input(props: Props) {
     }
   }
 
-  if (entryExists) {
-    return (
-      <Center h="80vh" maw={600} mx="auto">
-        <Stack align="center">
-          <Text>It appears you already entered a value today</Text>
-        </Stack>
-      </Center>
-    )
-  }
-
   return (
-    <Container h="80vh" size="xs" mx="auto" p={8}>
+    <Container h="100vh" size="xs" mx="auto" p={8}>
       <Stack gap="lg" p={8}>
         <Group>
           <div>How do you feel?</div>

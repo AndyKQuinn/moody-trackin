@@ -16,10 +16,12 @@ import Chart from "./chart"
 import Ratings from "./ratings"
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { useRouter } from "next/navigation"
 
 export default function Reports() {
   const supabase = createClientComponentClient<any>()
   const user = useUser()
+  const router = useRouter()
 
   const [tracks, setTracks] = useState<any[]>([])
 
@@ -27,6 +29,7 @@ export default function Reports() {
     if (user) {
       getTracks()
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
@@ -36,8 +39,6 @@ export default function Reports() {
       .select("*")
       .eq("user_id", user?.id)
       .order("created_at", { ascending: false })
-    console.log("Tracks: ", tracks.data)
-
     setTracks(tracks.data || [])
   }
 
@@ -51,6 +52,7 @@ export default function Reports() {
       spacing={{ base: 10, sm: "xl" }}
       verticalSpacing={{ base: "md", sm: "xl" }}
       py={10}
+      h="100vh"
     >
       <Stack align="center">
         <Title order={1}>My Entries</Title>
@@ -70,10 +72,13 @@ export default function Reports() {
                 <Ratings value={track.rating} />
               </Flex>
               <Stack>
-                <Title order={6}>Comment</Title>
-                <Text pl={16}>{track.comment}</Text>
-                <Title order={6}>Learned Thing</Title>
-                <Text pl={16}>{track.learned_thing}</Text>
+                <Text pl={16}>
+                  <b>Comment:</b> {track.comment}
+                </Text>
+
+                <Text pl={16}>
+                  <b>Learn anything?: </b> {track.learned_thing}
+                </Text>
               </Stack>
             </Card>
           )
