@@ -13,6 +13,7 @@ import { useState } from "react"
 import { useDisclosure } from "@mantine/hooks"
 import { usePathname } from "next/navigation"
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import classes from "./Header.module.css"
 
@@ -23,6 +24,7 @@ const links = [
 
 export default function Header() {
   const user = useUser()
+  const router = useRouter()
   const pathname = usePathname()
   const [active, setActive] = useState(pathname)
 
@@ -32,20 +34,23 @@ export default function Header() {
 
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut()
+
     if (error) {
       console.log(error)
     }
+
+    router.push("/")
   }
 
   function LoginOrLogoutButton() {
     return (
       <>
         {!user ? (
-          <Button href="/sign-in" component={Link} size="md">
+          <Button href="/sign-in" component={Link} size="xs">
             Sign In
           </Button>
         ) : (
-          <Button onClick={handleLogout} size="md">
+          <Button onClick={handleLogout} size="xs">
             Logout
           </Button>
         )}
@@ -56,7 +61,7 @@ export default function Header() {
   return (
     <Box>
       <header className={classes.header}>
-        <Group justify="space-between" h="100%">
+        <Group h="100%" justify="space-between">
           <div>
             <Anchor href="/" underline="never">
               Moody Trackin

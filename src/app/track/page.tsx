@@ -43,7 +43,7 @@ export default function HomeView() {
 
   if (entryExistsForToday) {
     return (
-      <Center h="100vh" maw={600} mx="auto">
+      <Center maw={600} mx="auto">
         <Stack align="center">
           <Text>It appears you already entered a value today</Text>
         </Stack>
@@ -59,7 +59,7 @@ export default function HomeView() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            minHeight: "100%",
+            // minHeight: "100%",
           }}
         >
           <Stack align="center">

@@ -62,7 +62,7 @@ export default function Input(props: Props) {
   }
 
   return (
-    <Container h="100vh" size="xs" mx="auto" p={8}>
+    <Container size="xs" mx="auto" p={8}>
       <Stack gap="lg" p={8}>
         <Group>
           <div>How do you feel?</div>

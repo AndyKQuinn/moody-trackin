@@ -7,6 +7,7 @@ import {
   Center,
   Flex,
   Pagination,
+  ScrollArea,
   SimpleGrid,
   Stack,
   Text,
@@ -51,8 +52,10 @@ export default function Reports() {
       cols={{ base: 1, sm: 2 }}
       spacing={{ base: 10, sm: "xl" }}
       verticalSpacing={{ base: "md", sm: "xl" }}
-      py={10}
-      h="100vh"
+      h="2000px"
+      style={{ background: "#49055F" }}
+      // py={10}
+      // h="100%"
     >
       <Stack align="center">
         <Title order={1}>My Entries</Title>
@@ -63,6 +66,7 @@ export default function Reports() {
         <Center>
           <Pagination total={10} disabled />
         </Center>
+
         {tracks.map((track, index) => {
           const date = new Date(track.created_at).toLocaleDateString()
           return (

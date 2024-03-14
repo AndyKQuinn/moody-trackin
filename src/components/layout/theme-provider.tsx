@@ -12,8 +12,8 @@ import { MantineProvider } from "@mantine/core"
 export function ThemeProvider({ children, ...props }: any) {
   const user = useUser()
   const style = {
-    background: "radial-gradient(at center, #764770, #49055F)",
-    height: "100%",
+    background: "#49055F",
+    height: "100vh",
   }
 
   return (
@@ -25,7 +25,7 @@ export function ThemeProvider({ children, ...props }: any) {
       {...props}
     >
       <div style={style}>
-        {user && <Header />}
+        {user.user && <Header />}
         {children}
       </div>
     </MantineProvider>
