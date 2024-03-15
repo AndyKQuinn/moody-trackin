@@ -52,10 +52,7 @@ export default function Reports() {
       cols={{ base: 1, sm: 2 }}
       spacing={{ base: 10, sm: "xl" }}
       verticalSpacing={{ base: "md", sm: "xl" }}
-      h="2000px"
       style={{ background: "#49055F" }}
-      // py={10}
-      // h="100%"
     >
       <Stack align="center">
         <Title order={1}>My Entries</Title>
@@ -66,27 +63,30 @@ export default function Reports() {
         <Center>
           <Pagination total={10} disabled />
         </Center>
+        <ScrollArea h={600}>
+          <Stack gap={4}>
+            {tracks.map((track, index) => {
+              const date = new Date(track.created_at).toLocaleDateString()
+              return (
+                <Card mx={4} key={index}>
+                  <Flex justify="space-between">
+                    <Title order={6}>{date}</Title>
+                    <Ratings value={track.rating} />
+                  </Flex>
+                  <Stack>
+                    <Text pl={16}>
+                      <b>Comment:</b> {track.comment}
+                    </Text>
 
-        {tracks.map((track, index) => {
-          const date = new Date(track.created_at).toLocaleDateString()
-          return (
-            <Card mx={4} key={index}>
-              <Flex justify="space-between">
-                <Title order={6}>{date}</Title>
-                <Ratings value={track.rating} />
-              </Flex>
-              <Stack>
-                <Text pl={16}>
-                  <b>Comment:</b> {track.comment}
-                </Text>
-
-                <Text pl={16}>
-                  <b>Learn anything?: </b> {track.learned_thing}
-                </Text>
-              </Stack>
-            </Card>
-          )
-        })}
+                    <Text pl={16}>
+                      <b>Learn anything?: </b> {track.learned_thing}
+                    </Text>
+                  </Stack>
+                </Card>
+              )
+            })}
+          </Stack>
+        </ScrollArea>
       </Stack>
     </SimpleGrid>
   )
